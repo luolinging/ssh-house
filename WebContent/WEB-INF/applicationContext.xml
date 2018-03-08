@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	<bean id="datasource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/shhouse?useUnicode=true&amp;characterEncoding=utf-8">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	<bean id="sessionfactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="datasource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list> 
+				 
+				<value>pojobean/Buyinfo.hbm.xml</value> 
+				<value>pojobean/Idatadic.hbm.xml</value> 
+				<value>pojobean/Lyb.hbm.xml</value> 
+				<value>pojobean/Mixinfo.hbm.xml</value> 
+				<value>pojobean/Pros.hbm.xml</value> 
+				<value>pojobean/Scinfo.hbm.xml</value> 
+				<value>pojobean/Sellinfo.hbm.xml</value> 
+				<value>pojobean/Sysuser.hbm.xml</value> 
+				<value>pojobean/Taolun.hbm.xml</value> 
+				<value>pojobean/Zxgs.hbm.xml</value> 
+				
+				
+				
+				</list>
+		</property></bean>
+	 
+	 <bean id="HibernateDAO" class="dao.HibernateDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionfactory" />
+		</property>
+	</bean>
+	
+	 
+				
+			<bean id="BuyinfoDAO" class="dao.BuyinfoDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+			 
+			<bean id="IdatadicDAO" class="dao.IdatadicDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+			<bean id="LybDAO" class="dao.LybDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+			<bean id="MixinfoDAO" class="dao.MixinfoDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+			<bean id="ProsDAO" class="dao.ProsDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+			<bean id="ScinfoDAO" class="dao.ScinfoDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+			<bean id="SellinfoDAO" class="dao.SellinfoDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+			<bean id="TaolunDAO" class="dao.TaolunDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+			<bean id="ZxgsDAO" class="dao.ZxgsDAO">
+					<property name="sessionFactory">
+						<ref bean="sessionfactory" />
+					</property>
+				</bean>
+	
+	
+	 
+	 </beans>
